@@ -1,0 +1,22 @@
+{
+  "_default": {
+    "1": {
+      "username": "admin",
+      "email": "admin@gmail.com",
+      "password": "240be518fabd2724ddb6f04eeb1da5967448d7e831c08c8fa822809f74c720a9",
+      "role": "admin"
+    },
+    "2": {
+      "username": "owner",
+      "email": "owner@gmail.com",
+      "password": "43a0d17178a9d26c9e0fe9a74b0b45e38d32f27aed887a008a54bf6e033bf7b9",
+      "role": "owner"
+    },
+    "3": {
+      "username": "teja",
+      "email": "tejareddykatta1@gmail.com",
+      "password": "7ade4b1dc2376616d3384cc1624d0ac6486573b0e27ae5103856131eb7465726",
+      "role": "customer"
+    }
+  }
+}

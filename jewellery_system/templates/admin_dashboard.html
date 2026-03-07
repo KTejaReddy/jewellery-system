@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<title>Admin Dashboard</title>
+
+<link rel="stylesheet"
+href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+<a href="/scan" class="btn btn-primary mb-3">Scan Jewellery QR</a>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+</head>
+
+<body>
+
+<div class="container mt-4">
+
+<h2 class="text-center mb-4">Admin Dashboard</h2>
+
+<div class="row mb-4">
+
+<div class="col-md-3">
+<div class="card text-center shadow p-3">
+<h5>Total</h5>
+<h3 id="total">{{ stats.total }}</h3>
+</div>
+</div>
+
+<div class="col-md-3">
+<div class="card text-center shadow p-3">
+<h5>Submitted</h5>
+<h3 id="submitted">{{ stats.submitted }}</h3>
+</div>
+</div>
+
+<div class="col-md-3">
+<div class="card text-center shadow p-3">
+<h5>Completed</h5>
+<h3 id="completed">{{ stats.completed }}</h3>
+</div>
+</div>
+
+<div class="col-md-3">
+<div class="card text-center shadow p-3">
+<h5>Resolved</h5>
+<h3 id="resolved">{{ stats.resolved }}</h3>
+</div>
+</div>
+
+</div>
+
+<div class="row mb-4">
+
+<div class="col-md-6">
+
+<div class="card shadow p-4">
+
+<h4>Requests Chart</h4>
+
+<canvas id="barChart"></canvas>
+
+</div>
+
+</div>
+
+<div class="col-md-6">
+
+<div class="card shadow p-4">
+
+<h4>Status Distribution</h4>
+
+<canvas id="pieChart"></canvas>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="card shadow p-4">
+
+<h4 class="mb-3">Jewellery Requests</h4>
+
+<input
+type="text"
+id="search"
+class="form-control mb-3"
+placeholder="Search customer or tracking">
+<div class="card p-4 mb-4">
+
+<h4>Search Jewellery</h4>
+
+<form method="GET" action="/admin">
+
+<div class="row">
+
+<div class="col-md-4">
+<input type="text" name="tracking" class="form-control" placeholder="Tracking ID">
+</div>
+
+<div class="col-md-4">
+<input type="text" name="customer" class="form-control" placeholder="Customer Username">
+</div>
+
+<div class="col-md-3">
+<select name="status" class="form-control">
+
+<option value="">All Status</option>
+<option>Submitted</option>
+<option>Assigned</option>
+<option>Processing</option>
+<option>Completed</option>
+
+</select>
+</div>
+
+<div class="col-md-1">
+<button class="btn btn-primary">Search</button>
+</div>
+
+</div>
+
+</form>
+
+</div>
+
+<table class="table table-striped" id="table">
+
+<thead>
+
+<tr>
+<th>Tracking ID</th>
+<th>Image</th>
+<th>Customer</th>
+<th>Jewellery</th>
+<th>Status</th>
+<th>Date</th>
+</tr>
+
+</thead>
+
+<tbody>
+
+{% for i in data %}
+
+<tr>
+
+<td>{{ i.tracking }}</td>
+
+<td>
+<img src="/images/{{ i.image }}" width="80">
+</td>
+
+<td>{{ i.customer }}</td>
+
+<td>{{ i.title }}</td>
+
+<td>{{ i.status }}</td>
+
+<td>{{ i.date }}</td>
+
+</tr>
+
+{% endfor %}
+
+</tbody>
+
+</table>
+
+</div>
+
+<br>
+
+<a href="/logout" class="btn btn-danger">Logout</a>
+
+</div>
+
+<script>
+
+const total = parseInt(document.getElementById("total").innerText);
+const submitted = parseInt(document.getElementById("submitted").innerText);
+const completed = parseInt(document.getElementById("completed").innerText);
+const resolved = parseInt(document.getElementById("resolved").innerText);
+
+new Chart(document.getElementById("barChart"), {
+type: "bar",
+data: {
+labels: ["Submitted","Completed","Resolved"],
+datasets: [{
+data: [submitted,completed,resolved],
+backgroundColor:["#ffc107","#28a745","#6c757d"]
+}]
+}
+});
+
+new Chart(document.getElementById("pieChart"), {
+type: "pie",
+data: {
+labels:["Submitted","Completed","Resolved"],
+datasets:[{
+data:[submitted,completed,resolved],
+backgroundColor:["#ffc107","#28a745","#6c757d"]
+}]
+}
+});
+
+document.getElementById("search").addEventListener("keyup", function(){
+
+let filter = this.value.toLowerCase();
+let rows = document.querySelectorAll("#table tbody tr");
+
+rows.forEach(r=>{
+let text = r.innerText.toLowerCase();
+r.style.display = text.includes(filter) ? "" : "none";
+});
+
+});
+
+</script>
+
+</body>
+</html>
