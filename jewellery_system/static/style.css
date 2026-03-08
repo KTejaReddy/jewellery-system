@@ -571,3 +571,51 @@ background:linear-gradient(135deg,#00f2fe,#4facfe);
 color:white;
 font-weight:600;
 }
+/* -------------------------
+FORM INPUTS FIX
+------------------------- */
+
+.input-group{
+display:flex;
+align-items:stretch;
+width:100%;
+}
+
+/* icon box */
+
+.input-group-text{
+width:55px;
+display:flex;
+align-items:center;
+justify-content:center;
+background:rgba(255,255,255,0.12);
+border:none;
+color:white;
+border-radius:10px 0 0 10px;
+height:52px;
+}
+
+/* text field */
+
+.input-group .form-control{
+height:52px;
+border-radius:0 10px 10px 0;
+background:rgba(255,255,255,0.12);
+border:none;
+color:white;
+padding-left:15px;
+}
+
+/* focus */
+
+.input-group .form-control:focus{
+background:rgba(255,255,255,0.18);
+box-shadow:0 0 10px rgba(0,242,255,0.5);
+outline:none;
+}
+
+/* placeholder */
+
+.form-control::placeholder{
+color:#dddddd;
+}

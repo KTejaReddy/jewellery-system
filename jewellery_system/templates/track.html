@@ -5,39 +5,63 @@
 
 <title>Track Jewellery</title>
 
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
 <link rel="stylesheet"
 href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
 
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<link rel="stylesheet" href="/static/style.css">
+
 <style>
 
-.timeline {
+.timeline{
 display:flex;
 justify-content:space-between;
-margin-top:30px;
+margin-top:40px;
+position:relative;
 }
 
-.step {
+.timeline::before{
+content:"";
+position:absolute;
+top:14px;
+left:0;
+right:0;
+height:4px;
+background:#ddd;
+z-index:0;
+}
+
+.step{
 text-align:center;
 flex:1;
+position:relative;
+z-index:1;
 }
 
-.circle {
+.circle{
 width:30px;
 height:30px;
 border-radius:50%;
-background:#ccc;
+background:#bbb;
 margin:auto;
+display:flex;
+align-items:center;
+justify-content:center;
+color:white;
+font-size:12px;
 }
 
-.active {
+.active{
 background:#28a745;
 }
 
-.line {
-height:4px;
-background:#ccc;
-flex:1;
-margin-top:13px;
+.step p{
+margin-top:8px;
+font-size:13px;
 }
 
 </style>
@@ -48,17 +72,26 @@ margin-top:13px;
 
 <div class="container mt-5">
 
-<h2 class="text-center mb-4">Track Jewellery</h2>
+<h2 class="text-center mb-4">
+
+<i class="fa-solid fa-magnifying-glass text-warning"></i>
+Track Jewellery
+
+</h2>
+
 
 <div class="row justify-content-center">
 
 <div class="col-md-5">
 
-<div class="card shadow p-4">
+<div class="card shadow p-4 fade-in">
 
 <form method="POST">
 
-<label class="mb-2">Enter Tracking ID</label>
+<label class="mb-2">
+<i class="fa-solid fa-barcode"></i>
+Enter Tracking ID
+</label>
 
 <input
 type="text"
@@ -68,7 +101,10 @@ placeholder="JWL-123456"
 required>
 
 <button class="btn btn-primary w-100">
-Track
+
+<i class="fa-solid fa-search"></i>
+Track Jewellery
+
 </button>
 
 </form>
@@ -79,23 +115,29 @@ Track
 
 </div>
 
+
 {% if item %}
 
 <br>
 
-<div class="card shadow p-4">
+<div class="card shadow p-4 fade-in">
 
 <div class="row">
 
-<div class="col-md-4">
+<div class="col-md-4 text-center">
 
-<img src="/images/{{item.image}}" class="img-fluid">
+<img src="/images/{{item.image}}" class="img-fluid rounded">
 
 </div>
 
 <div class="col-md-8">
 
-<h4>{{item.title}}</h4>
+<h4 class="mb-3">
+
+<i class="fa-solid fa-gem text-warning"></i>
+{{item.title}}
+
+</h4>
 
 <p><b>Tracking ID:</b> {{item.tracking}}</p>
 
@@ -109,32 +151,37 @@ Track
 
 <hr>
 
-<h5>Status Timeline</h5>
+<h5 class="text-center">
+
+<i class="fa-solid fa-clock"></i>
+Status Timeline
+
+</h5>
 
 <div class="timeline">
 
 <div class="step">
-<div class="circle {% if item.status in ['Submitted','Assigned','Processing','Completed','Resolved'] %}active{% endif %}"></div>
+<div class="circle {% if item.status in ['Submitted','Assigned','Processing','Completed','Resolved'] %}active{% endif %}">1</div>
 <p>Submitted</p>
 </div>
 
 <div class="step">
-<div class="circle {% if item.status in ['Assigned','Processing','Completed','Resolved'] %}active{% endif %}"></div>
+<div class="circle {% if item.status in ['Assigned','Processing','Completed','Resolved'] %}active{% endif %}">2</div>
 <p>Assigned</p>
 </div>
 
 <div class="step">
-<div class="circle {% if item.status in ['Processing','Completed','Resolved'] %}active{% endif %}"></div>
+<div class="circle {% if item.status in ['Processing','Completed','Resolved'] %}active{% endif %}">3</div>
 <p>Processing</p>
 </div>
 
 <div class="step">
-<div class="circle {% if item.status in ['Completed','Resolved'] %}active{% endif %}"></div>
+<div class="circle {% if item.status in ['Completed','Resolved'] %}active{% endif %}">4</div>
 <p>Completed</p>
 </div>
 
 <div class="step">
-<div class="circle {% if item.status == 'Resolved' %}active{% endif %}"></div>
+<div class="circle {% if item.status == 'Resolved' %}active{% endif %}">5</div>
 <p>Resolved</p>
 </div>
 

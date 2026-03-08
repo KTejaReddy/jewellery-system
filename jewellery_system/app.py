@@ -176,7 +176,7 @@ Do not share this code with anyone.
 # -------------------------
 
 def generate_qr(tracking):
-    url = f"http://127.0.0.1:5000/track/{tracking}"
+    url = f"https://jewellery-system.onrender.com/track/{tracking}"
     img = qrcode.make(url)
     path = f"{QR_FOLDER}/{tracking}.png"
     img.save(path)

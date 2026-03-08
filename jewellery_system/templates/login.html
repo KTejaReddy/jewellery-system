@@ -2,7 +2,10 @@
 <html>
 
 <head>
+
 <title>Jewellery Secure System</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
 
 <link rel="stylesheet"
 href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
@@ -16,37 +19,84 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
 
 <body>
 
+<div class="login-bg">
+
 <div class="container">
 
 <div class="row justify-content-center align-items-center" style="height:100vh">
 
 <div class="col-md-4">
 
-<div class="card p-4">
+<div class="card login-card p-4">
 
-<h3 class="text-center mb-3">
-<i class="fa-solid fa-gem"></i> Jewellery System
+<div class="text-center mb-4">
+
+<h3 class="login-title">
+<i class="fa-solid fa-gem text-warning"></i>
+Jewellery System
 </h3>
+
+<p class="login-sub">
+Secure Jewellery Workflow Platform
+</p>
+
+</div>
 
 <form method="POST">
 
+<div class="input-group mb-3">
+
+<span class="input-group-text">
+<i class="fa-solid fa-user"></i>
+</span>
+
 <input name="username"
-class="form-control mb-3"
-placeholder="Username">
+class="form-control"
+placeholder="Username"
+required>
+
+</div>
+
+<div class="input-group mb-3">
+
+<span class="input-group-text">
+<i class="fa-solid fa-lock"></i>
+</span>
 
 <input name="password"
 type="password"
-class="form-control mb-3"
-placeholder="Password">
+class="form-control"
+placeholder="Password"
+required>
 
-<button class="btn btn-primary w-100">
-<i class="fa-solid fa-lock"></i> Login
+</div>
+
+<button class="btn btn-primary w-100 login-btn">
+
+<i class="fa-solid fa-lock"></i>
+Secure Login
+
 </button>
 
 </form>
 
 <div class="text-center mt-3">
-<a href="/register">Create Account</a>
+
+<a href="/register" class="register-link">
+
+Create Account
+
+</a>
+
+</div>
+
+<div class="text-center mt-3 security-note">
+
+<i class="fa-solid fa-shield-halved"></i>
+Protected with OTP Verification
+
+</div>
+
 </div>
 
 </div>

@@ -5,6 +5,8 @@
 
 <title>Jewellery System</title>
 
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
 <link rel="stylesheet"
 href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
 
@@ -19,29 +21,83 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
 
 <body>
 
+<!-- SIDEBAR -->
+
 <div class="sidebar">
 
-<h4 class="text-center text-warning">
+<div class="logo-area text-center">
+
+<h4 class="logo-title">
 <i class="fa-solid fa-gem"></i> JEWELS
 </h4>
 
-<hr>
-
-<a href="#"><i class="fa-solid fa-chart-line"></i> Dashboard</a>
-
-<a href="/submit"><i class="fa-solid fa-plus"></i> Submit Jewellery</a>
-
-<a href="/track"><i class="fa-solid fa-search"></i> Track</a>
-
-<a href="/logout"><i class="fa-solid fa-right-from-bracket"></i> Logout</a>
+<p class="logo-sub">Management System</p>
 
 </div>
 
+<hr class="menu-divider">
+
+<a href="#" class="menu-link">
+<i class="fa-solid fa-chart-line"></i>
+<span>Dashboard</span>
+</a>
+
+<a href="/submit" class="menu-link">
+<i class="fa-solid fa-plus"></i>
+<span>Submit Jewellery</span>
+</a>
+
+<a href="/track" class="menu-link">
+<i class="fa-solid fa-search"></i>
+<span>Track Jewellery</span>
+</a>
+
+<a href="/logout" class="menu-link logout">
+<i class="fa-solid fa-right-from-bracket"></i>
+<span>Logout</span>
+</a>
+
+</div>
+
+
+<!-- MAIN CONTENT -->
+
 <div class="main">
+
+<!-- TOP BAR -->
+
+<div class="topbar">
+
+<div class="top-left">
+
+<h3 class="page-title">
+<i class="fa-solid fa-gem text-warning"></i>
+Jewellery Workflow System
+</h3>
+
+</div>
+
+<div class="top-right">
+
+<span class="system-status">
+<i class="fa-solid fa-circle text-success"></i>
+System Online
+</span>
+
+</div>
+
+</div>
+
+
+<!-- PAGE CONTENT -->
+
+<div class="page-content fade-in">
 
 {% block content %}
 
 {% endblock %}
+
+</div>
 
 </div>
 
